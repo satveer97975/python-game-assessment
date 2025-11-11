@@ -33,9 +33,19 @@ font_style = pygame.font.SysFont("bahnschrift", 25)
 score_font = pygame.font.SysFont("comicsansms", 35)
 
 def your_score(score):
-    """Display the current score"""
-    value = score_font.render("Score: " + str(score), True, black)
-    game_display.blit(value, [0, 0])
+    try:
+        with open("highscore.txt", "r") as file:
+            high_score = int(file.read())
+    except:
+        high_score = 0
+    
+    if score > high_score:
+        high_score = score
+        with open("highscore.txt", "w") as file:
+            file.write(str(high_score))
+    
+    value = score_font.render("High Score: " + str(high_score), True, blue)
+    game_display.blit(value, [0, 40])
 
 def our_snake(snake_block, snake_list):
     """Draw the snake on the screen"""
@@ -130,6 +140,7 @@ def game_loop():
         # Draw snake and score
         our_snake(snake_block, snake_list)
         your_score(length_of_snake - 1)
+        high_score(length_of_snake - 1)
 
         pygame.display.update()
 
@@ -146,4 +157,5 @@ def game_loop():
 
 # Start the game
 if __name__ == "__main__":
+
     game_loop()
