@@ -1,0 +1,17 @@
+SNAKE GAME INSTRUCTIONS
+
+Objective:
+- Control the snake to eat the red food
+- Grow as long as possible without hitting walls or yourself
+
+Controls:
+- UP ARROW: Move up
+- DOWN ARROW: Move down
+- LEFT ARROW: Move left
+- RIGHT ARROW: Move right
+- Q: Quit game (when game over)
+- C: Play again (when game over)
+
+Scoring:
+- Each food eaten: +1 point
+- High score is saved automatically
